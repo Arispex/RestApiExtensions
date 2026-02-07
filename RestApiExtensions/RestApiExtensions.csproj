@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="TShock" Version="5.2.4"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="HttpServer">
+        <HintPath>..\..\..\.nuget\packages\tshock\5.2.4\contentFiles\any\net6.0\HttpServer.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

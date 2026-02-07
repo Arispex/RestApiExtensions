@@ -1,0 +1,19 @@
+# Build outputs
+bin/
+obj/
+
+# .NET user-specific files
+*.user
+*.rsuser
+*.suo
+*.userprefs
+*.DotSettings.user
+
+# IDE folders
+.vs/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
