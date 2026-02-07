@@ -12,8 +12,8 @@
 
     <ItemGroup>
       <Reference Include="HttpServer">
-        <HintPath>..\..\..\.nuget\packages\tshock\5.2.4\contentFiles\any\net6.0\HttpServer.dll</HintPath>
+        <HintPath>HttpServer.dll</HintPath>
       </Reference>
     </ItemGroup>
-
+    
 </Project>
