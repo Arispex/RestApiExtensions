@@ -15,7 +15,7 @@
 2.	将 `RestApiExtensions.dll` 放入服务端 `ServerPlugins/`
 3.	重启服务端
 4.	给调用接口的账号授予权限：
-•	rae.player.inventory
+•	rae.users.inventory
 •	rae.world.progress
 
 
@@ -23,14 +23,14 @@
 
 ### 1. 查询玩家背包
 
-- 路径：`/plugins/restapiextensions/v2/player/inventory`
-- 权限：`rae.player.inventory`
-- 参数：`player`（必填，玩家名称）
+- 路径：`/v2/users/inventory`
+- 权限：`rae.users.inventory`
+- 参数：`user`（必填，玩家名称）
 
 示例：
 
 ```text
-GET /plugins/restapiextensions/v2/player/inventory?player=Alice&token=你的Token
+GET /v2/users/inventory?user=Alice&token=你的Token
 ```
 
 成功返回示例：
@@ -53,27 +53,27 @@ GET /plugins/restapiextensions/v2/player/inventory?player=Alice&token=你的Toke
 ```json
 {
   "status": "400",
-  "error": "缺少必要参数 player"
+  "error": "缺少必要参数 user"
 }
 ```
 
 ```json
 {
   "status": "400",
-  "error": "玩家未找到"
+  "error": "用户未找到"
 }
 ```
 
 ### 2. 查询世界进度
 
-- 路径：`/plugins/restapiextensions/v2/world/progress`
+- 路径：`/v2/world/progress`
 - 权限：`rae.world.progress`
 - 参数：无
 
 示例：
 
 ```text
-GET /plugins/restapiextensions/v2/world/progress?token=你的Token
+GET /v2/world/progress?token=你的Token
 ```
 
 返回示例：

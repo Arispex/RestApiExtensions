@@ -9,8 +9,6 @@ namespace RestApiExtensions;
 [ApiVersion(2, 1)]
 public sealed class RestApiExtensionsPlugin(Main game) : TerrariaPlugin(game)
 {
-    private const string RoutePrefix = "/plugins/restapiextensions/v2";
-
     public override string Author => "千亦";
 
     public override string Description => "REST API Extensions";
@@ -21,21 +19,21 @@ public sealed class RestApiExtensionsPlugin(Main game) : TerrariaPlugin(game)
 
     public override void Initialize()
     {
-        TShock.RestApi.Register(new SecureRestCommand($"{RoutePrefix}/player/inventory", Inventory, "rae.player.inventory"));
-        TShock.RestApi.Register(new SecureRestCommand($"{RoutePrefix}/world/progress", Progress, "rae.world.progress"));
+        TShock.RestApi.Register(new SecureRestCommand($"/v2/users/inventory", Inventory, "rae.users.inventory"));
+        TShock.RestApi.Register(new SecureRestCommand($"/v2/world/progress", Progress, "rae.world.progress"));
     }
 
-    private static object Inventory(RestRequestArgs args) // 查看玩家背包
+    private static object Inventory(RestRequestArgs args)
     {
-        var playerName = args.Request?.Parameters?["player"];
-        if (string.IsNullOrWhiteSpace(playerName))
+        var user = args.Request?.Parameters?["user"];
+        if (string.IsNullOrWhiteSpace(user))
         {
-            return Error("400", "缺少必要参数 player");
+            return Error("400", "缺少必要参数 user");
         }
 
-        if (!PlayerInventoryService.TryGetInventory(playerName, out var inventory, out var error))
+        if (!UserInventoryService.TryGetInventory(user, out var inventory, out var error))
         {
-            return Error("400", error ?? "玩家未找到");
+            return Error("400", error ?? "用户未找到");
         }
 
         return new RestObject()

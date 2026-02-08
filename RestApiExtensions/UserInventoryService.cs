@@ -2,30 +2,30 @@ using TShockAPI;
 
 namespace RestApiExtensions;
 
-public static class PlayerInventoryService
+public static class UserInventoryService
 {
-    public static bool TryGetInventory(string playerName, out NetItem[] inventory, out string? error)
+    public static bool TryGetInventory(string user, out NetItem[] inventory, out string? error)
     {
         inventory = Array.Empty<NetItem>();
         error = null;
 
-        if (string.IsNullOrWhiteSpace(playerName))
+        if (string.IsNullOrWhiteSpace(user))
         {
-            error = "玩家名称不能为空";
+            error = "用户不能为空";
             return false;
         }
 
-        var account = TShock.UserAccounts.GetUserAccountByName(playerName);
+        var account = TShock.UserAccounts.GetUserAccountByName(user);
         if (account == null)
         {
-            error = "玩家未找到";
+            error = "用户未找到";
             return false;
         }
 
         var data = TShock.CharacterDB.GetPlayerData(null, account.ID);
         if (data == null)
         {
-            error = "未找到玩家数据";
+            error = "未找到用户数据";
             return false;
         }
 
