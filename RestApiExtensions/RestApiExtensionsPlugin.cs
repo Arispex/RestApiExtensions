@@ -70,9 +70,22 @@ public sealed class RestApiExtensionsPlugin(Main game) : TerrariaPlugin(game)
                     {"当前魔力值", data.mana},
                     {"最大魔力值", data.maxMana},
                     {"渔夫任务数", data.questsCompleted},
+                    {"PVE死亡次数", GetIntField(data, "deathsPVE")},
+                    {"PVP死亡次数", GetIntField(data, "deathsPVP")},
                 }
             }
         };
+    }
+
+    private static int GetIntField(PlayerData data, string name)
+    {
+        var field = typeof(PlayerData).GetField(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (field?.GetValue(data) is int value)
+        {
+            return value;
+        }
+
+        return 0;
     }
 
     private static object Progress(RestRequestArgs args) // 获取进度详情
