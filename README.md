@@ -16,6 +16,7 @@
 3.	重启服务端
 4.	给调用接口的账号授予权限：
 •	rae.users.inventory
+•	rae.users.info
 •	rae.world.progress
 
 
@@ -103,6 +104,33 @@ GET /v2/world/progress?token=你的Token
     "星云柱": false,
     "涡柱": false,
     "星尘柱": false
+  }
+}
+```
+
+### 3. 查询用户信息
+
+- 路径：`/v2/users/info`
+- 权限：`rae.users.info`
+- 参数：`user`（必填，玩家名称）
+
+示例：
+
+```text
+GET /v2/users/info?user=Alice&token=你的Token
+```
+
+返回示例：
+
+```json
+{
+  "status": "200",
+  "response": {
+    "当前生命值": 400,
+    "最大生命值": 400,
+    "当前魔力值": 200,
+    "最大魔力值": 200,
+    "渔夫任务数": 20
   }
 }
 ```

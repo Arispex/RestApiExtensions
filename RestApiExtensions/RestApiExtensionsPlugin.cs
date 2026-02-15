@@ -20,6 +20,7 @@ public sealed class RestApiExtensionsPlugin(Main game) : TerrariaPlugin(game)
     public override void Initialize()
     {
         TShock.RestApi.Register(new SecureRestCommand($"/v2/users/inventory", Inventory, "rae.users.inventory"));
+        TShock.RestApi.Register(new SecureRestCommand($"/v2/users/info", UserInfo, "rae.users.info"));
         TShock.RestApi.Register(new SecureRestCommand($"/v2/world/progress", Progress, "rae.world.progress"));
     }
 
@@ -41,6 +42,35 @@ public sealed class RestApiExtensionsPlugin(Main game) : TerrariaPlugin(game)
             {
                 "response",
                 inventory
+            }
+        };
+    }
+
+    private static object UserInfo(RestRequestArgs args)
+    {
+        var user = args.Request?.Parameters?["user"];
+        if (string.IsNullOrWhiteSpace(user))
+        {
+            return Error("400", "缺少必要参数 user");
+        }
+
+        if (!UserDataService.TryGetPlayerData(user, out var data, out var error))
+        {
+            return Error("400", error ?? "用户未找到");
+        }
+
+        return new RestObject()
+        {
+            {
+                "response",
+                new Dictionary<string, object?>
+                {
+                    {"当前生命值", data.health},
+                    {"最大生命值", data.maxHealth},
+                    {"当前魔力值", data.mana},
+                    {"最大魔力值", data.maxMana},
+                    {"渔夫任务数", data.questsCompleted},
+                }
             }
         };
     }
