@@ -49,27 +49,27 @@ public sealed class RestApiExtensionsPlugin(Main game) : TerrariaPlugin(game)
     {
         var progress = new Dictionary<string, bool>()
         {
-            {"史莱姆王", NPC.downedSlimeKing}, //史莱姆王
-            {"克苏鲁之眼", NPC.downedBoss1}, //克苏鲁之眼
-            {"世界吞噬者 或 克苏鲁之脑", NPC.downedBoss2}, //世界吞噬者 或 克苏鲁之脑
-            {"蜂后", NPC.downedQueenBee}, //蜂后
-            {"骷髅王", NPC.downedBoss3}, //骷髅王
-            {"巨鹿", NPC.downedDeerclops}, //巨鹿
-            {"肉山", Main.hardMode}, //肉山
-            {"史莱姆皇后", NPC.downedQueenSlime}, //史莱姆皇后
-            {"双子魔眼", NPC.downedMechBoss2}, //双子魔眼
-            {"毁灭者", NPC.downedMechBoss1}, //毁灭者
-            {"机械骷髅王", NPC.downedMechBoss3}, //机械骷髅王
-            {"世纪之花", NPC.downedPlantBoss}, //世纪之花
-            {"石巨人", NPC.downedGolemBoss}, //石巨人
-            {"朱鲨", NPC.downedFishron}, // 朱鲨
-            {"光女", NPC.downedEmpressOfLight}, //光女
-            {"教徒", NPC.downedAncientCultist}, //教徒
-            {"月总", NPC.downedMoonlord}, //月总
-            {"太阳能柱", NPC.downedTowerSolar}, //太阳能柱
-            {"星云柱", NPC.downedTowerNebula}, //星云柱
-            {"涡柱", NPC.downedTowerVortex}, //涡柱
-            {"星尘柱", NPC.downedTowerStardust}, //星尘柱
+            {"史莱姆王", NPC.downedSlimeKing},
+            {"克苏鲁之眼", NPC.downedBoss1},
+            {"世界吞噬者 或 克苏鲁之脑", NPC.downedBoss2},
+            {"蜂王", NPC.downedQueenBee},
+            {"骷髅王", NPC.downedBoss3},
+            {"独眼巨鹿", NPC.downedDeerclops},
+            {"血肉墙", Main.hardMode},
+            {"史莱姆皇后", NPC.downedQueenSlime},
+            {"双子魔眼", NPC.downedMechBoss2},
+            {"毁灭者", NPC.downedMechBoss1},
+            {"机械骷髅王", NPC.downedMechBoss3},
+            {"世纪之花", NPC.downedPlantBoss},
+            {"石巨人", NPC.downedGolemBoss},
+            {"猪龙鱼公爵", NPC.downedFishron},
+            {"光之女皇", NPC.downedEmpressOfLight},
+            {"拜月教邪教徒", NPC.downedAncientCultist},
+            {"日耀柱", NPC.downedTowerSolar},
+            {"星云柱", NPC.downedTowerNebula},
+            {"星旋柱", NPC.downedTowerVortex},
+            {"星尘柱", NPC.downedTowerStardust},
+            {"月亮领主", NPC.downedMoonlord},
         };
         return new RestObject()
         {
