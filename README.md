@@ -1,12 +1,6 @@
 # RestApiExtensions
 
-一个用于 Terraria TShock 服务端的 REST API 扩展插件，提供：
-
-- 玩家背包查询接口
-- Boss 进度查询接口
-
-当前插件版本：`2.0.0`  
-目标框架：`.NET 9`
+一个用于 Terraria TShock 服务端的 REST API 扩展插件
 
 
 ## 快速开始

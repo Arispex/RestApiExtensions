@@ -15,7 +15,7 @@ public sealed class RestApiExtensionsPlugin(Main game) : TerrariaPlugin(game)
 
     public override string Name => "REST API Extensions";
 
-    public override Version Version => new(2, 0, 0);
+    public override Version Version => new(2, 1, 0);
 
     public override void Initialize()
     {
