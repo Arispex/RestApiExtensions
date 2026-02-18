@@ -4,13 +4,10 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -31,13 +28,15 @@ jobs:
       - name: Build
         run: dotnet build RestApiExtensions.sln --configuration Release --no-restore
 
-      - name: Prepare artifact
+      - name: Generate release timestamp
+        id: release_meta
         run: |
-          mkdir -p artifacts/RestApiExtensions
-          cp RestApiExtensions/bin/Release/net9.0/RestApiExtensions.dll artifacts/RestApiExtensions/
+          echo "timestamp=$(date -u +%Y%m%d%H%M%S)" >> "$GITHUB_OUTPUT"
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: RestApiExtensions
-          path: artifacts/RestApiExtensions
+          tag_name: ${{ steps.release_meta.outputs.timestamp }}
+          name: ${{ steps.release_meta.outputs.timestamp }}
+          make_latest: true
+          files: RestApiExtensions/bin/Release/net9.0/RestApiExtensions.dll
